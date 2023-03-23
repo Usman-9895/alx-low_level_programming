@@ -8,17 +8,20 @@
  *
  * Return:  (Success)
  */
-int main() {
-int i, a = 1, b = 2, c;
-printf("%d, %d, ", a, b);
-for (i = 2; i < 98; i++)
+int main(void)
 {
-c = a + b;
-printf("%d, ", c);
-a = b;
-b = c;
+unsigned long long int bef = 0;
+unsigned long long int aft = 1;
+unsigned long long int tmp;
+int i;
+
+for (i = 0; i < 100; i++)
+{
+printf("%llu, ", aft);
+tmp = aft;
+aft += bef;
+bef = tmp;
 }
-c = a + b;
-printf("%d\n", c);
+printf("\n");
 return (0);
 }
