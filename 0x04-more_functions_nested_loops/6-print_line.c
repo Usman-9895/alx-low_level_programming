@@ -3,7 +3,8 @@
 /**
  * print_line - prints _ a draws a straight line in the terminal.
  *
- * @n: check a char
+ * @n: The number of line to draw
+ * Return: empty
  */
 
 void print_line(int n)
@@ -20,6 +21,7 @@ void print_line(int n)
 	{
 	_putchar(95);
 	}
+	_putchar('\n');
 	}
 
 }
