@@ -1,41 +1,34 @@
 #include "main.h"
+#include <unistd.h>
 #include <stdlib.h>
+#include <string.h>
 
 /**
- * str_concat - get ends of input and add together for size
- * @s1: input one to concat
- * @s2: input two to concat
- * Return: concat of s1 and s2
+ * str_concat - Concatenates two strings.
+ * @s1: First string to concatenate.
+ * @s2: Second string to concatenate.
+ *
+ * Return: Pointer to newly allocated space in memory which contains the
+ *         contents of s1, followed by the contents of s2, and null terminated.
+ *         NULL on failure.
  */
 char *str_concat(char *s1, char *s2)
 {
-	char *conct;
-	int i, ci;
-
 	if (s1 == NULL)
-		s1 = "";
+	s1 = "";
 	if (s2 == NULL)
-		s2 = "";
-		i = ci = 0;
-	while (s1[i] != '\0')
-		i++;
-	while (s2[ci] != '\0')
-		ci++;
-	conct = malloc(sizeof(char) * (i + ci + 1));
-	if (conct == NULL)
-		return (NULL);
-	i = ci = 0;
+	s2 = "";
 
-	while (s1[i] != '\0')
-	{
-		conct[i] = s1[i];
-		i++;
-	}
-	while (s2[ci] != '\0')
-	{
-		conct[i] = s2[ci];
-		i++, ci++;
-	}
-	conct[i] = '\0';
-	return (conct);
+	size_t s1_len = strlen(s1);
+	size_t s2_len = strlen(s2);
+
+	char *result = malloc(s1_len + s2_len + 1);
+
+	if (result == NULL)
+	return NULL;
+
+	memcpy(result, s1, s1_len);
+	memcpy(result + s1_len, s2, s2_len + 1);
+
+	return result;
 }
