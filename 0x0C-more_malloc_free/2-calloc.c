@@ -10,21 +10,23 @@
  */
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
-    void *ptr;
-    
-    /* Check for zero inputs */
-    if (nmemb == 0 || size == 0) {
-        return NULL;
-    }
-    
-    /* Allocate memory using malloc */
-    ptr = malloc(nmemb * size);
-    if (ptr == NULL) {
-        return NULL;
-    }
-    
-    /* Set memory to zero */
-    memset(ptr, 0, nmemb * size);
-    
-    return ptr;
+	void *ptr;
+
+	/* Check for zero inputs */
+	if (nmemb == 0 || size == 0)
+	{
+	return (NULL);
+	}
+
+	/* Allocate memory using malloc */
+	ptr = malloc(nmemb * size);
+	if (ptr == NULL)
+	{
+	return (NULL);
+	}
+
+	/* Set memory to zero */
+	memset(ptr, 0, nmemb * size);
+
+	return (ptr);
 }
