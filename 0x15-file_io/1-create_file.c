@@ -1,36 +1,26 @@
-#include <fcntl.h>
-#include <unistd.h>
-#include <stdlib.h>
 #include "main.h"
 
 /**
- * create_file - creates a file and writes a string to it
- * @filename: name of the file to create
- * @text_content: string to write to the file (NULL terminated)
- *
- * Return: 1 on success, -1 on failure
+ * print_binary - prints the binary equivalent of a decimal number
+ * @n: number to print in binary
  */
-int create_file(const char *filename, char *text_content)
+void print_binary(unsigned long int n)
 {
-	int fd, ret = 1, len = 0;
+	int i, cnt = 0;
+	unsigned long int cur;
 
-		if (filename == NULL)
-		return (-1);
-
-	fd = open(filename, O_CREAT | O_WRONLY | O_TRUNC, 0600);
-		if (fd == -1)
-		return (-1);
-
-	if (text_content != NULL)
+	for (i = 63; i >= 0; i--)
 	{
-		while (text_content[len])
-		len++;
+		cur = n >> i;
 
-		ret = write(fd, text_content, len);
-		if (ret == -1)
-		
+		if (cur & 1)
+		{
+			_putchar('1');
+			cnt++;
+		}
+		else if (cnt)
+			_putchar('0');
 	}
-	close(fd);
-
-	return (ret);
+	if (!cnt)
+		_putchar('0');
 }
